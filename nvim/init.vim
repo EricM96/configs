@@ -1,4 +1,4 @@
-" Fish doesn't integrate well with fish
+" Fish doesn't integrate well with vim
 set shell=/bin/bash
 set nocompatible 
  
@@ -10,21 +10,23 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'chriskempson/base16-vim'
 call plug#end()
 " airline theme
-let g:airline_theme='minimalist'
+let g:airline_powerline_fonts = 1
+let g:airline_theme='base16'
 " Ale configuration
 let g:ale_sign_column_always = 0
 
-syntax on 
-let base16colorspace=256
+syntax on
+set termguicolors
 colorscheme base16-dracula
 
 filetype plugin indent on 
-set tabstop=2
-set softtabstop=2
+set tabstop=4
+set softtabstop=4
 set expandtab
-set shiftwidth=2
+set shiftwidth=4
 
-" Line numbering
+" Line numbering'
+set number
 set relativenumber
 
 " Show command
@@ -41,4 +43,4 @@ set incsearch
 set hlsearch
 
 " Key remappings
-inoremap kj <Esc> 
+inoremap <C-j> <Esc>
