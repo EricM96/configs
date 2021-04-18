@@ -6,7 +6,7 @@ set -x TERM xterm-256color
 set -x EDITOR nvim
 set -x JAVA_HOME /usr/lib/jvm/java-1.8.0-openjdk-amd64
 
-alias ls ="ls -AG"
+alias ls="ls -AG"
 alias vi="nvim"
 alias vim="nvim"
 alias py="python3"
