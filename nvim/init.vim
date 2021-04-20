@@ -30,10 +30,17 @@ onoremap <C-j> <Esc>
 lnoremap <C-j> <Esc>
 tnoremap <C-j> <Esc>
 
-call plug#begin('~/.nvim/plugged')
+call plug#begin('~/.config/nvim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'sheerun/vim-polyglot'
+    Plug 'joshdick/onedark.vim'
+    Plug 'itchyny/lightline.vim'
 call plug#end()
+
+set termguicolors
+let g:onedark_termcolors=16
+colorscheme onedark
+let g:lightline = { 'colorscheme': 'onedark' }
 
 "
 " COC DEFAULT SETTINGS
@@ -41,7 +48,7 @@ call plug#end()
 " TextEdit might fail if hidden is not set.
 set hidden
 
-Some servers have issues with backup files, see #649.
+" Some servers have issues with backup files, see #649.
 set nobackup
 set nowritebackup
 
