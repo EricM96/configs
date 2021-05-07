@@ -2,7 +2,7 @@ set shell=/bin/bash
 set clipboard+=unnamed
 set nocompatible
 
-filetype plugin indent on
+filetype plugin indent on 
 set tabstop=4
 set softtabstop=4
 set expandtab
@@ -13,13 +13,12 @@ set encoding=utf-8
 set splitright
 set splitbelow
 
+" Line numbering
 set number
 set relativenumber
 
-set showcmd
-
-let mapleader="\<Space>"
-nnoremap ; :
+" Key remappings
+let mapleader = "\<Space>"
 nnoremap <C-j> <Esc>
 inoremap <C-j> <Esc>
 vnoremap <C-j> <Esc>
@@ -30,21 +29,50 @@ onoremap <C-j> <Esc>
 lnoremap <C-j> <Esc>
 tnoremap <C-j> <Esc>
 
-call plug#begin('~/.config/nvim/plugged')
+nnoremap ; :
+
+call plug#begin('~/.vim/plugged')
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
     Plug 'sheerun/vim-polyglot'
     Plug 'joshdick/onedark.vim'
     Plug 'itchyny/lightline.vim'
+    Plug 'preservim/nerdtree'
+    Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
+let g:ondedark_termcolors=16
 set termguicolors
-let g:onedark_termcolors=16
 colorscheme onedark
+
+if exists('g:neovide')
+    set guifont=JetBrains\ Mono:13.5
+    if has('mac')
+        nnoremap <D-j> <Esc>
+        inoremap <D-j> <Esc>
+        vnoremap <D-j> <Esc>
+        snoremap <D-j> <Esc>
+        xnoremap <D-j> <Esc>
+        cnoremap <D-j> <Esc>
+        onoremap <D-j> <Esc>
+        lnoremap <D-j> <Esc>
+        tnoremap <D-j> <Esc>
+    endif
+endif
+
+" LightLine
+set noshowmode
 let g:lightline = { 'colorscheme': 'onedark' }
 
-"
-" COC DEFAULT SETTINGS
-"
+" NERDTree
+nnoremap <leader>fs :NERDTree<CR>
+nnoremap <leader>ft :NERDTreeToggle<CR>
+nnoremap <leader>ff :NERDTreeFind<CR>
+
+" CoC Default Settings
+" Set internal encoding of vim, not needed on neovim, since coc.nvim using some
+" unicode characters in the file autoload/float.vim
+set encoding=utf-8
+
 " TextEdit might fail if hidden is not set.
 set hidden
 
@@ -109,7 +137,7 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> gh :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
@@ -128,8 +156,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
